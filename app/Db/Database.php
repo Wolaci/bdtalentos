@@ -37,6 +37,14 @@ class Database{
         }
     }
 
+    public function select($where=null, $order=null, $limit = null, $fields = '*'){
+        $where = strlen($where) ? $where : '';
+        $order = strlen($order) ? $order : '';
+        $limit = strlen($limit) ? $limit : '';
+        $query = "SELECT $fields FROM $this->table ".$where." ".$order." ".$limit;
+        return $this->execute($query);
+    }
+
     public function insert($values){
         $fields = array_keys($values);
         $binds = array_pad([],count($fields), '?');

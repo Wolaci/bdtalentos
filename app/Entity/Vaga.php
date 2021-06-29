@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use \App\Db\Database;
+use \PDO;
 
 class Vaga{
 
@@ -11,6 +12,11 @@ class Vaga{
     public $descricao;
     public $ativo;
     public $data;
+
+    public static function getVagas($where=null, $order=null, $limit = null){
+        return (new Database('vagas'))->select($where, $order, $limit)
+        ->fetchAll(PDO::FETCH_CLASS,self::class);
+    }
 
     public function cadastrar(){
         $this->data = date('Y-m-d H:i:s');
@@ -21,7 +27,7 @@ class Vaga{
                                             'ativo' => $this->ativo,
                                             'data' => $this->data
                                         ]);
-        var_dump($this);                                
+        return true;                             
     }
 
 }
