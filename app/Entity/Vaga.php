@@ -44,4 +44,8 @@ class Vaga{
                                                 ]);                  
     }
 
+    public function excluir(){
+        return (new Database('vagas'))->delete('id = '.$this->id);
+    }
+
 }

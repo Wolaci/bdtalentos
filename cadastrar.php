@@ -4,9 +4,8 @@ require __DIR__.'/vendor/autoload.php';
 use \App\Entity\Vaga;
 
 Define('TITLE', 'Cadastrar vaga');
-
+$obVaga = new Vaga;
 if(isset($_POST['titulo'], $_POST['descricao'], $_POST['ativo'])){
-    $obVaga = new Vaga;
     $obVaga->titulo = $_POST['titulo'];
     $obVaga->descricao = $_POST['descricao'];
     $obVaga->ativo = $_POST['ativo'];
