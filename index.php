@@ -4,10 +4,15 @@ require __DIR__.'/vendor/autoload.php';
 use \App\Entity\Vaga;
 
 $busca = filter_input(INPUT_GET, 'busca', FILTER_SANITIZE_STRING);
+$filtroStatus = filter_input(INPUT_GET, 'status', FILTER_SANITIZE_STRING);
+$filtroStatus = in_array($filtroStatus,['s','n']) ? $filtroStatus : '';
 
 $condicoes = [
-  strlen($busca) ? 'titulo LIKE "%'.str_replace(' ', '%',$busca).'%"': null
+  strlen($busca) ? 'titulo LIKE "%'.str_replace(' ', '%',$busca).'%"': null,
+  strlen($filtroStatus) ? 'ativo = "'.$filtroStatus.'"': null
 ];
+
+$condicoes = array_filter($condicoes);
 
 $where = implode(' AND ',$condicoes);
 

@@ -61,8 +61,8 @@
           <label for="">Status</label>
           <select name="status" id="status" class="form-control">
             <option value="">Ativa/Inativa</option>
-            <option value="s">Ativa</option>
-            <option value="n">Inativa</option>
+            <option value="s" <?=$filtroStatus=='s' ?'selected' : ''?>>Ativa</option>
+            <option value="n" <?=$filtroStatus=='n' ?'selected' : ''?>>Inativa</option>
           </select>
         </div>
 
