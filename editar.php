@@ -2,6 +2,9 @@
 require __DIR__.'/vendor/autoload.php';
 
 use \App\Entity\Vaga;
+use \App\Session\Login;
+
+Login::requireLogin();
 
 Define('TITLE', 'Editar vaga');
 
