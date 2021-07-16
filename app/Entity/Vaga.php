@@ -18,6 +18,12 @@ class Vaga{
         ->fetchAll(PDO::FETCH_CLASS,self::class);
     }
 
+    public static function getQuantidadeVagas($where=null){
+        return (new Database('vagas'))->select($where,null,null,'COUNT(*) as qtd')
+        ->fetchObject()
+        ->qtd;
+    }
+
     public static function getVaga($id){
         return (new Database('vagas'))->select('id='.$id)
         ->fetchObject(self::class);

@@ -2,6 +2,7 @@
 require __DIR__.'/vendor/autoload.php';
 
 use \App\Entity\Vaga;
+use \App\Db\Pagination;
 
 $busca = filter_input(INPUT_GET, 'busca', FILTER_SANITIZE_STRING);
 $filtroStatus = filter_input(INPUT_GET, 'status', FILTER_SANITIZE_STRING);
@@ -15,6 +16,8 @@ $condicoes = [
 $condicoes = array_filter($condicoes);
 
 $where = implode(' AND ',$condicoes);
+$quantidadeVagas = Vaga::getQuantidadeVagas($where);
+// $obPagination = new Pagination();
 
 $vagas = Vaga::getVagas($where);
 
