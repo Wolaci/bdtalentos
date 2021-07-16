@@ -17,9 +17,10 @@ $condicoes = array_filter($condicoes);
 
 $where = implode(' AND ',$condicoes);
 $quantidadeVagas = Vaga::getQuantidadeVagas($where);
-// $obPagination = new Pagination();
 
-$vagas = Vaga::getVagas($where);
+$obPagination = new Pagination($quantidadeVagas, $_GET['pagina'] ?? 1, 10);
+
+$vagas = Vaga::getVagas($where,null,$obPagination->getLimit());
 
 include __DIR__.'/includes/header.php';
 include __DIR__.'/includes/listagem.php';

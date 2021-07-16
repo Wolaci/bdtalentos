@@ -38,6 +38,13 @@
                                                        </td>
                                                     </tr>';
 
+
+  $paginacao = '';
+  $paginas = $obPagination->getPages();
+  foreach($paginas as $key => $pagina){
+    $paginacao .= '<a href="?pagina='.$pagina['pagina'].'">
+    <button type="button" class="btn btn-light">'.$pagina['pagina'].'</button></a>';
+  }
 ?>
 <main>
 
@@ -93,6 +100,8 @@
     </table>
 
   </section>
-
+  <section>
+    <?=$paginacao;?>
+  </section>
 
 </main>
