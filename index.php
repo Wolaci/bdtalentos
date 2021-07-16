@@ -5,7 +5,7 @@ use \App\Entity\Vaga;
 use \App\Db\Pagination;
 
 $busca = filter_input(INPUT_GET, 'busca', FILTER_SANITIZE_STRING);
-$filtroStatus = filter_input(INPUT_GET, 'status', FILTER_SANITIZE_STRING);
+$filtroStatus = filter_input(INPUT_GET, 'filtroStatus', FILTER_SANITIZE_STRING);
 $filtroStatus = in_array($filtroStatus,['s','n']) ? $filtroStatus : '';
 
 $condicoes = [
