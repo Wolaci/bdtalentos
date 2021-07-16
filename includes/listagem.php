@@ -51,13 +51,26 @@
   <section>
     <form method="get">
       <div class="row my-4">
+
         <div class="col">
           <label for="">Buscar por título</label>
           <input type="text" name="busca" value="<?=$busca?>" class="form-control">
         </div>
+
+        <div class="col">
+          <label for="">Status</label>
+          <select name="status" id="status" class="form-control">
+            <option value="">Ativa/Inativa</option>
+            <option value="s">Ativa</option>
+            <option value="n">Inativa</option>
+          </select>
+        </div>
+
         <div class="col d-flex align-items-end">
             <button type="submit" class="btn btn-primary">Buscar</button>
         </div>
+
+
       </div>
     </form>
   </section>
