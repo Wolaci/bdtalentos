@@ -25,7 +25,12 @@ if(isset($_POST['acao'])){
 
     case 'cadastrar':
       if(isset($_POST['nome'], $_POST['email'], $_POST['senha'])){
-
+        
+        $obUsuario = Usuario::getUsuarioPorEmail($_POST['email']);
+        if($obUsuario instanceof Usuario){
+          $alertaCadastro = 'O e-mail digitado já está em uso';
+          break;
+        }
         $obUsuario = new Usuario();
         $obUsuario->nome = $_POST['nome'];
         $obUsuario->email = $_POST['email'];
