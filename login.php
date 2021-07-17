@@ -6,11 +6,21 @@ use \App\Session\Login;
 
 Login::requireLogout();
 
+$alertaLogin = '';
+$alertaCadastro = '';
+
 if(isset($_POST['acao'])){
 
   switch($_POST['acao']){
 
     case 'logar':
+      $obUsuario = Usuario::getUsuarioPorEmail($_POST['email']);
+      if(!$obUsuario instanceof Usuario || !password_verify($_POST['senha'], $obUsuario->senha)){
+        $alertaLogin = 'E-mail ou senha inválidos';
+        break;
+      }
+
+      Login::login($obUsuario);
       break;
 
     case 'cadastrar':
