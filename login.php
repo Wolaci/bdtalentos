@@ -36,7 +36,7 @@ if(isset($_POST['acao'])){
         $obUsuario->email = $_POST['email'];
         $obUsuario->senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
         $obUsuario->cadastrar();
-
+        Login::login($obUsuario);
       }
       break;
   }
