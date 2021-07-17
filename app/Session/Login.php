@@ -10,6 +10,12 @@ class Login{
     }
   }
 
+  public static function getUsuarioLogado(){
+    self::init();
+
+    return self::isLogged() ? $_SESSION['usuario'] : null;
+  }
+
   public static function login($obUsusario){
     self::init();
     $_SESSION['usuario'] = [
