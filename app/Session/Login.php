@@ -28,6 +28,14 @@ class Login{
     exit;
   }
 
+  public static function logout(){
+    self::init();
+    unset($_SESSION['usuario']);
+
+    header('location: login.php');
+    exit;
+  }
+
   public static function isLogged(){
     self::init();
     return isset($_SESSION['usuario']['id']);
